@@ -31,9 +31,9 @@ EOT
     location               = string
     name                   = string
     config_file            = optional(string)
-    enable_health_check    = optional(bool, false)
+    enable_health_check    = optional(bool) # Default: false
     end_of_life_date       = optional(string)
-    exclude_from_latest    = optional(bool, false)
+    exclude_from_latest    = optional(bool) # Default: false
     package_file           = optional(string)
     tags                   = optional(map(string))
     manage_action = object({
@@ -46,10 +46,10 @@ EOT
       media_link                 = string
     })
     target_region = object({
-      exclude_from_latest    = optional(bool, false)
+      exclude_from_latest    = optional(bool) # Default: false
       name                   = string
       regional_replica_count = number
-      storage_account_type   = optional(string, "Standard_LRS")
+      storage_account_type   = optional(string) # Default: "Standard_LRS"
     })
   }))
 }
