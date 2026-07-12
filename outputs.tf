@@ -1,3 +1,7 @@
+output "gallery_application_versions_id" {
+  description = "Map of id values across all gallery_application_versions, keyed the same as var.gallery_application_versions"
+  value       = { for k, v in azurerm_gallery_application_version.gallery_application_versions : k => v.id }
+}
 output "gallery_application_versions_config_file" {
   description = "Map of config_file values across all gallery_application_versions, keyed the same as var.gallery_application_versions"
   value       = { for k, v in azurerm_gallery_application_version.gallery_application_versions : k => v.config_file }
