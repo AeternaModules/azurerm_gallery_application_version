@@ -45,12 +45,12 @@ EOT
       default_configuration_link = optional(string)
       media_link                 = string
     })
-    target_region = object({
+    target_region = list(object({
       exclude_from_latest    = optional(bool) # Default: false
       name                   = string
       regional_replica_count = number
       storage_account_type   = optional(string) # Default: "Standard_LRS"
-    })
+    }))
   }))
 }
 

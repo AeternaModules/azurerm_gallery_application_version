@@ -22,11 +22,14 @@ resource "azurerm_gallery_application_version" "gallery_application_versions" {
     media_link                 = each.value.source.media_link
   }
 
-  target_region {
-    exclude_from_latest    = each.value.target_region.exclude_from_latest
-    name                   = each.value.target_region.name
-    regional_replica_count = each.value.target_region.regional_replica_count
-    storage_account_type   = each.value.target_region.storage_account_type
+  dynamic "target_region" {
+    for_each = each.value.target_region
+    content {
+      exclude_from_latest    = target_region.value.exclude_from_latest
+      name                   = target_region.value.name
+      regional_replica_count = target_region.value.regional_replica_count
+      storage_account_type   = target_region.value.storage_account_type
+    }
   }
 }
 
