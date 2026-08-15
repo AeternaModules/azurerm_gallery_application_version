@@ -28,7 +28,7 @@ output "gallery_application_versions_location" {
 }
 output "gallery_application_versions_manage_action" {
   description = "Map of manage_action values across all gallery_application_versions, keyed the same as var.gallery_application_versions"
-  value       = { for k, v in azurerm_gallery_application_version.gallery_application_versions : k => v.manage_action if v.manage_action != null && length(v.manage_action) > 0 }
+  value       = { for k, v in azurerm_gallery_application_version.gallery_application_versions : k => one(v.manage_action) if v.manage_action != null && length(v.manage_action) > 0 }
 }
 output "gallery_application_versions_name" {
   description = "Map of name values across all gallery_application_versions, keyed the same as var.gallery_application_versions"
@@ -40,7 +40,7 @@ output "gallery_application_versions_package_file" {
 }
 output "gallery_application_versions_source" {
   description = "Map of source values across all gallery_application_versions, keyed the same as var.gallery_application_versions"
-  value       = { for k, v in azurerm_gallery_application_version.gallery_application_versions : k => v.source if v.source != null && length(v.source) > 0 }
+  value       = { for k, v in azurerm_gallery_application_version.gallery_application_versions : k => one(v.source) if v.source != null && length(v.source) > 0 }
 }
 output "gallery_application_versions_tags" {
   description = "Map of tags values across all gallery_application_versions, keyed the same as var.gallery_application_versions"
